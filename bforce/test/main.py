@@ -3,7 +3,7 @@ import time
 import pytest
 from datasets import Dataset
 
-from bforce import timeout_retries, cache_result, clear_cache, TimeoutException
+from bforce import timeout_retries, cacheResult, clear_cache, TimeoutException
 
 data = {'text': ['I am a sentence', 'Another sentence', 'The last sentence']}
 dataset = Dataset.from_dict(data)
@@ -11,7 +11,7 @@ dataset = Dataset.from_dict(data)
 
 # This is the function we will be testing
 @timeout_retries(2, max_retries=2)
-@cache_result("test_cache")
+@cacheResult("test_cache")
 def func_to_test(batch, sleep_time=1):
     time.sleep(sleep_time)
     # Do some processing on the batch

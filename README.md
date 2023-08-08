@@ -36,13 +36,13 @@ In the example above, if `my_function` does not complete within 2 seconds, it wi
 
 ### Caching Results
 
-The `@cache_result` decorator can be used to cache the result of a function. This is especially useful for time-consuming functions where you want to avoid computing the same result multiple times.
+The `@cacheResult` decorator can be used to cache the result of a function. This is especially useful for time-consuming functions where you want to avoid computing the same result multiple times.
 
 ```python
-from bforce import cache_result
+from bforce import cacheResult
 
 
-@cache_result("my_cache")
+@cacheResult("my_cache")
 def my_function(arg1, arg2):
 # Your code here
 ```

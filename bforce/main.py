@@ -8,12 +8,12 @@ import json
 from .exceptions import TimeoutException
 
 
-def timeout_retries(seconds, max_retries=3):
+def timeout_retries(seconds, MAX_RETRIES=3):
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
-            for _ in range(max_retries):
-                res = [TimeoutException('function [%s] timeout [%s seconds]' % (func.__name__, seconds))]
+            for _ in range(MAX_RETRIES):
+                res = [TimeoutException(f"Function {func.__name__} timeout {seconds} seconds")]
 
                 def newFunc():
                     try:
@@ -51,7 +51,7 @@ def make_cache_key(func, args, kwargs):
     return hashlib.sha256(key).hexdigest()
 
 
-class cache_result:
+class cacheResult:
     def __init__(self, cache_dir="cache"):
         self.cache_dir = cache_dir
         if not os.path.exists(cache_dir):
